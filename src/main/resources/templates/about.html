@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <title>Информация</title>
+    <title>Информация</title>
 </head>
 <body>
 <h1>Информация</h1>
-<a href="/home?name=1" >
+<a href="/home?id=1">
     назад
 </a>
+<form method="post" action="/home">
+    <input type="text" name="id">
+    <input type="submit" value="Отправить">
+</form>
 </body>
 </html>
