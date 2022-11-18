@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Домашняя страница</title>
+    <title>Калькулятор Get</title>
 </head>
-<body>
-<h1>Домашняя страница</h1>
-<a href="/about" >Переход</a>
-<p th:text = "${temp}"></p>
+<body bgcolor="#FFE4C4"  leftmargin="center" >
+<div align="center">
+<h1>Калькулятор Get</h1>
+<form method="get" action="/home">
+    <br><input  type="text" name="number" value="number" th:value="${number}"><br>
+    <br><select name="action" id="action">
+        <option value="P">Сложение</option>
+        <option value="M">Вычитание</option>
+        <option value="Y">Умножение</option>
+        <option value="D">Деление</option>
+    </select></br>
+    <br><input type="text" name="number2" th:value="${number2}"></br>
+    <br><input type="submit" value="Вычисление"></br>
+    <u> <br><label th:text="${itog1}"></label></br></u>
+    <br><a href="/about" >Перейти на калькулятор Post</a></br>
+</form>
+</div>
 </body>
 </html>
