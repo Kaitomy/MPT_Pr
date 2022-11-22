@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Созвездия</title>
+    <style>
+        th,td{
+            border:solid black;
+        }
+    </style>
+
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/about" class="nav-link px-2 link-secondary">Домашняя страница</a></li>
+            <li><a href="/star/" class="nav-link px-2 link-dark">Список звезд</a></li>
+            <li><a href="/planet/" class="nav-link px-2 link-dark">Планеты</a></li>
+            <li><a href="/constellations/" class="nav-link px-2 link-dark">Список созвездий</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<h1>Список созвездий</h1>
+<a href="/constellations/add" class="btn btn-success">Добавить созвездие</a>
+<table style="border: solid black">
+    <tr>
+        <th>Название</th>
+        <th>Количество звезд</th>
+        <th>Полушарие</th>
+        <th>Сезон видимости</th>
+        <th>Тип</th>
+    </tr>
+    <tr th:each = "el : ${constellations_list}">
+        <td th:text="${el.Constellations_Name}"></td>
+        <td th:text="${el.Constellations_Number}"></td>
+        <td th:text="${el.Constellations_Hemisphere}"></td>
+        <td th:text="${el.Constellations_Season}"></td>
+        <td th:text="${el.Constellations_Type}"></td>
+
+    </tr>
+</table>
+</body>
+</html>
