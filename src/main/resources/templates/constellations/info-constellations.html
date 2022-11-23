@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Звезды</title>
+    <title>Созвездия</title>
     <style>
         th,td{
             border:solid black;
@@ -30,36 +30,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<h1>Список звезд</h1>
+<h1 th:text = "'Созвездие: ' + ${one_constellations.getConstellationsname()}"></h1>
 <div class="container">
-<form method="get" action="/star/filter/">
-    <input name="name" type="text">
-    <input class="btn btn-info" type="submit" value="Найти">
-</form>
-
-<form method="get" action="/star/filtercontains/">
-    <input name="name" type="text">
-    <input class="btn btn-info" type="submit" value="Найти">
-</form>
+    <h2 th:text="'Количество звезд: ' + ${one_constellations.getConstellations_Number()}"></h2>
+    <p th:text="'Полушарие: ' + ${one_constellations.getConstellations_Hemisphere()}"></p>
+    <h2 th:text="'Сезон: ' + ${one_constellations.getConstellations_Season()}"></h2>
+    <h2 th:text="'Тип: ' + ${one_constellations.getConstellations_Type()}"></h2>
 </div>
-<a href="/star/add" class="btn btn-success">Добавить звезду</a>
-<table style="border: solid black">
-    <tr>
-        <th>Название</th>
-        <th>Класс</th>
-        <th>Люмен</th>
-    </tr>
-<tr th:each = "el : ${star_list}">
-    <td th:text="${el.name}"></td>
-    <td th:text="${el.class_star}"></td>
-    <td th:text="${el.lumen}"></td>
-    <td>
-        <a th:href="'/star/detail/' + ${el.UID}">
-            Редактировать
-        </a>
-    </td>
-
-</tr>
-</table>
+<a th:href="'/constellations/detail/' + ${one_constellations.ConstellationsID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/constellations/detail/' + ${one_constellations.ConstellationsID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/constellations/" class="btn btn-success">Назад</a>
 </body>
 </html>

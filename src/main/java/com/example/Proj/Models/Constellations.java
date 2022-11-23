@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.swing.*;
+
 @Entity
 public class Constellations {
     @Id
@@ -12,7 +12,7 @@ public class Constellations {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long ConstellationsID;
 
-    private  String Constellations_Name;
+    private  String constellationsname;
 
     private Integer  Constellations_Number;
 
@@ -25,8 +25,8 @@ private Long ConstellationsID;
 
 
 
-    public Constellations(String Constellations_Name, Integer Constellations_Number, String Constellations_Hemisphere, String Constellations_Season, String Constellations_Type) {
-        this.Constellations_Name = Constellations_Name;
+    public Constellations(String constellationsname, Integer Constellations_Number, String Constellations_Hemisphere, String Constellations_Season, String Constellations_Type) {
+        this.constellationsname = constellationsname;
         this.Constellations_Number = Constellations_Number;
         this.Constellations_Hemisphere = Constellations_Hemisphere;
         this.Constellations_Season = Constellations_Season;
@@ -46,12 +46,12 @@ private Long ConstellationsID;
         this.ConstellationsID = ConstellationsID;
     }
 
-    public String getConstellations_Name() {
-        return Constellations_Name;
+    public String getConstellationsname() {
+        return constellationsname;
     }
 
-    public void setConstellations_Name(String Constellations_Name) {
-        this.Constellations_Name = Constellations_Name;
+    public void setConstellationsname(String Constellations_Name) {
+        this.constellationsname = Constellations_Name;
     }
 
     public Integer getConstellations_Number() {

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.swing.*;
 
 @Entity
 public class Planet {
@@ -13,19 +12,19 @@ public class Planet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long PlanetID;
 
-    private  String Planet_Name;
+    private  String planetname;
 
-    private String  Planet_Sistem;
+    private String planetsistem;
 
     private String  Planet_Life;
 
 
 
-    public Planet(String Planet_Name, Integer Planet_Mass, Integer Planet_Age, String Planet_Sistem, String Planet_Life) {
-        this.Planet_Name = Planet_Name;
+    public Planet(String planetname, Integer Planet_Mass, Integer Planet_Age, String planetsistem, String Planet_Life) {
+        this.planetname = planetname;
         this.Planet_Mass = Planet_Mass;
         this.Planet_Age = Planet_Age;
-        this.Planet_Sistem = Planet_Sistem;
+        this.planetsistem = planetsistem;
         this.Planet_Life = Planet_Life;
     }
 
@@ -44,12 +43,12 @@ public class Planet {
         this.PlanetID = PlanetID;
     }
 
-    public String getPlanet_Name() {
-        return Planet_Name;
+    public String getPlanetname() {
+        return planetname;
     }
 
-    public void setPlanet_Name(String Planet_Name) {
-        this.Planet_Name = Planet_Name;
+    public void setPlanetname(String Planet_Name) {
+        this.planetname = Planet_Name;
     }
 
     public Integer getPlanet_Mass() {
@@ -68,12 +67,12 @@ public class Planet {
         this.Planet_Age = Planet_Age;
     }
 
-    public String getPlanet_Sistem() {
-        return Planet_Sistem;
+    public String getPlanetsistem() {
+        return planetsistem;
     }
 
-    public void setPlanet_Sistem(String Planet_Sistem) {
-        this.Planet_Sistem = Planet_Sistem;
+    public void setPlanetsistem(String Planet_Sistem) {
+        this.planetsistem = Planet_Sistem;
     }
 
     public String getPlanet_Life() {

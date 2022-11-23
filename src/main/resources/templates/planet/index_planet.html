@@ -41,27 +41,28 @@
         <th>Обитаемость</th>
     </tr>
     <tr th:each = "el : ${planet_list}">
-        <td th:text="${el.Planet_Name}"></td>
+        <td th:text="${el.planetname}"></td>
         <td th:text="${el.Planet_Mass}"></td>
         <td th:text="${el.Planet_Age}"></td>
-        <td th:text="${el.Planet_Sistem}"></td>
+        <td th:text="${el.planetsistem}"></td>
         <td th:text="${el.Planet_Life}"></td>
-
+        <td>
+            <a th:href="'/planet/detail/' + ${el.PlanetID}">
+                Редактировать
+            </a>
+        </td>
     </tr>
 </table>
-<form action="/planet-find" method="get">
-    <table>
-        <tr>
-            <td>
-                <input type="text" name="Planet_Name"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button type="submit">Поиск</button>
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="container">
+    <form method="get" action="/planet/filter/">
+        <input name="planetname" type="text">
+        <input class="btn btn-info" type="submit" value="Найти">
+    </form>
+
+    <form method="get" action="/planet/filtercontains/">
+        <input name="planetname" type="text">
+        <input class="btn btn-info" type="submit" value="Найти">
+    </form>
+</div>
 </body>
 </html>

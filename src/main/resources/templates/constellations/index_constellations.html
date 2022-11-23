@@ -41,13 +41,28 @@
         <th>Тип</th>
     </tr>
     <tr th:each = "el : ${constellations_list}">
-        <td th:text="${el.Constellations_Name}"></td>
+        <td th:text="${el.constellationsname}"></td>
         <td th:text="${el.Constellations_Number}"></td>
         <td th:text="${el.Constellations_Hemisphere}"></td>
         <td th:text="${el.Constellations_Season}"></td>
         <td th:text="${el.Constellations_Type}"></td>
-
+        <td>
+            <a th:href="'/constellations/detail/' + ${el.ConstellationsID}">
+                Редактировать
+            </a>
+        </td>
     </tr>
 </table>
+<div class="container">
+    <form method="get" action="/constellations/filter/">
+        <input name="constellationsname" type="text">
+        <input class="btn btn-info" type="submit" value="Найти">
+    </form>
+
+    <form method="get" action="/constellations/filtercontains/">
+        <input name="constellationsname" type="text">
+        <input class="btn btn-info" type="submit" value="Найти">
+    </form>
+</div>
 </body>
 </html>
