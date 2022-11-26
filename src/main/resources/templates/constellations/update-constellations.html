@@ -14,17 +14,24 @@
 <body>
 <div class="container"></div>
 <h1>Редактировать созвездие</h1>
-<form method="post">
+<form method="post" th:object="${constellations}">
+<input  th:field="*{ConstellationsID}" class="form-control" type="hidden" placeholder="Название">
+
     <label>Название созвездия</label>
-    <input th:value="${object.constellationsname}" class="form-control" type="text" name="constellationsname" placeholder="Название">
+    <input th:field="*{constellationsname}" class="form-control" type="text"  placeholder="Название">
+    <div th:if="${#fields.hasErrors('constellationsname')}" th:errors="*{constellationsname}" style="color: red"></div>
     <label>Количество звезд</label>
-    <input th:value="${object.Constellations_Number}" class="form-control" type="number" name="Constellations_Number" placeholder="Количество звезд">
+    <input th:field="*{Constellations_Number}" class="form-control" type="number"  placeholder="Количество звезд">
+    <div th:if="${#fields.hasErrors('Constellations_Number')}" th:errors="*{Constellations_Number}" style="color: red"></div>
     <label>Полушарие</label>
-    <input th:value="${object.Constellations_Hemisphere}"class="form-control" type="text" name="Constellations_Hemisphere" placeholder="Полушарие">
+    <input th:field="*{Constellations_Hemisphere}" class="form-control" type="text"  placeholder="Полушарие">
+    <div th:if="${#fields.hasErrors('Constellations_Hemisphere')}" th:errors="*{Constellations_Hemisphere}" style="color: red"></div>
     <label>Сезон</label>
-    <input th:value="${object.Constellations_Season}"class="form-control" type="text" name="Constellations_Season" placeholder="Сезон">
+    <input th:field="*{Constellations_Season}" class="form-control" type="text"  placeholder="Сезон">
+    <div th:if="${#fields.hasErrors('Constellations_Season')}" th:errors="*{Constellations_Season}" style="color: red"></div>
     <label>Тип</label>
-    <input th:value="${object.Constellations_Type}"class="form-control" type="text" name="Constellations_Type" placeholder="Тип">
+    <input th:field="*{Constellations_Type}" class="form-control" type="text"  placeholder="Тип">
+    <div th:if="${#fields.hasErrors('Constellations_Type')}" th:errors="*{Constellations_Type}" style="color: red"></div>
     <input class="btn btn-success" type="submit" value="Изменить созвездие">
 </form>
 <a class="btn btn-danger" href="/constellations/">Назад</a>

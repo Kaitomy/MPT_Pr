@@ -12,16 +12,20 @@
   <header th:insert="/fragments/header :: headerMain"></header>
 </head>
 <body>
-<h1>Добавить звезду звезд</h1>
-<form method="post">
+<h1>Добавить звезду </h1>
+
+<form method="post" th:object="${star}">
   <label>Название звезды</label>
-  <input class="form-control" type="text" name="name" placeholder="Название">
+  <input th:field="*{name}" class="form-control" type="text" name="name" placeholder="Название">
+ <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></div>
   <label>Класс</label>
-  <input class="form-control" type="text" name="class" placeholder="Класс звезды">
+  <input th:field="*{class_star}" class="form-control" type="text" name="class" placeholder="Класс звезды">
+  <div th:if="${#fields.hasErrors('class_star')}" th:errors="*{class_star}" style="color: red"></div>
   <label>Светимость</label>
-  <input class="form-control" type="number" name="lumen" placeholder="Светимость">
+  <input th:field="*{lumen}" class="form-control" type="number" name="lumen" placeholder="Светимость">
+  <div th:if="${#fields.hasErrors('lumen')}" th:errors="*{lumen}" style="color: red"></div>
   <input class="btn btn-success" type="submit" value="Добавить звезду">
 </form>
-<a class="btn btn-danger" href="/star/">Назад</a>
+<button class="btn btn-danger" href="/star/">Назад</button>
 </body>
 </html>

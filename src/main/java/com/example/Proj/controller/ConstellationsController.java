@@ -2,13 +2,17 @@ package com.example.Proj.controller;
 
 import com.example.Proj.Models.Constellations;
 import com.example.Proj.Models.Planet;
+import com.example.Proj.Models.Star;
 import com.example.Proj.Repository.ConstellationsRepository;
 import com.example.Proj.Repository.PlanetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -27,20 +31,20 @@ public class ConstellationsController {
         return "constellations/index_constellations";
     }
     @PostMapping("/add")
-    public String AddConstellations ( @RequestParam(name = "Constellations_Name") String Constellations_Name,
-                              @RequestParam(name = "Constellations_Number") int Constellations_Number,
-                              @RequestParam(name = "Constellations_Hemisphere") String Constellations_Hemisphere,
-                              @RequestParam(name = "Constellations_Season") String Constellations_Season,
-                              @RequestParam(name = "Constellations_Type") String Constellations_Type
-
-    )
+    public String AddConstellations (@Valid Constellations constellations, BindingResult bindingResult)
     {
-        Constellations new_constellations = new Constellations(Constellations_Name,Constellations_Number,Constellations_Hemisphere,Constellations_Season,Constellations_Type);
-        constellationsRepository.save(new_constellations);
+        if (constellations.getConstellationsname().equals("Привет")) {
+            bindingResult.addError(new ObjectError("defaultMessage", "Привет! Это дефолтное сообщение"));
+        }
+        if (bindingResult.hasErrors()) {
+            return "constellations/constellations-add";
+        }
+
+        constellationsRepository.save(constellations);
         return "redirect:/constellations/";
     }
     @GetMapping("/add")
-    public String AddView()
+    public String AddView(Constellations constellations)
     {
         return "constellations/constellations-add";
     }
@@ -81,33 +85,24 @@ public class ConstellationsController {
     @GetMapping("/detail/{id}/upd")
     public  String updateView(
             @PathVariable Long id,
+            Constellations constellations,
             Model model
     )
     {
-        model.addAttribute(
-                "object",
-                constellationsRepository.findById(id).orElseThrow()
-        );
+        constellations =  constellationsRepository.findById(id).orElseThrow();
+        model.addAttribute("constellations",constellations);
         return "constellations/update-constellations";
     }
     @PostMapping("/detail/{id}/upd")
-    public  String update(
-            @PathVariable Long id,
-            @RequestParam String constellationsname,
-            @RequestParam Integer Constellations_Number,
-            @RequestParam String Constellations_Hemisphere,
-            @RequestParam String Constellations_Season,
-            @RequestParam String Constellations_Type
+    public  String update(  @Valid Constellations constellations, BindingResult bindingResult, Model model
     )
     {
-        Constellations constellations = constellationsRepository.findById(id).orElseThrow();
+        if (bindingResult.hasErrors()) {
+            return "constellations/update-constellations";
+        }
 
-        constellations.setConstellationsname(constellationsname);
-        constellations.setConstellations_Number(Constellations_Number);
-        constellations.setConstellations_Hemisphere(Constellations_Hemisphere);
-        constellations.setConstellations_Season(Constellations_Season);
-        constellations.setConstellations_Type(Constellations_Type);
         constellationsRepository.save(constellations);
+
         return "redirect:/constellations/detail/" + constellations.getConstellationsID();
     }
 }

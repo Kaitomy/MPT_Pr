@@ -14,17 +14,24 @@
 <body>
 <div class="container"></div>
 <h1>Редактировать планету</h1>
-<form method="post">
+<form method="post" th:object="${planet}">
+  <input  th:field="*{PlanetID}" class="form-control" type="hidden" placeholder="Название">
+
   <label>Название планеты</label>
-  <input th:value="${object.planetname}" class="form-control" type="text" name="planetname" placeholder="Название">
+  <input th:field="*{planetname}" class="form-control" type="text" placeholder="Название">
+  <div th:if="${#fields.hasErrors('planetname')}" th:errors="*{planetname}" style="color: red"></div>
   <label>Масса</label>
-  <input th:value="${object.Planet_Mass}" class="form-control" type="number" name="Planet_Mass" placeholder="Масса">
+  <input th:field="*{Planet_Mass}" class="form-control" type="number"  placeholder="Масса">
+  <div th:if="${#fields.hasErrors('Planet_Mass')}" th:errors="*{Planet_Mass}" style="color: red"></div>
   <label>Возрасть</label>
-  <input th:value="${object.Planet_Age}"class="form-control" type="number" name="Planet_Age" placeholder="Возрасть">
+  <input th:field="*{Planet_Age}" class="form-control" type="number"  placeholder="Возрасть">
+  <div th:if="${#fields.hasErrors('Planet_Age')}" th:errors="*{Planet_Age}" style="color: red"></div>
   <label>Система</label>
-  <input th:value="${object.planetsistem}"class="form-control" type="text" name="planetsistem" placeholder="Система">
+  <input th:field="*{planetsistem}" class="form-control" type="text"  placeholder="Система">
+  <div th:if="${#fields.hasErrors('planetsistem')}" th:errors="*{planetsistem}" style="color: red"></div>
   <label>Обитаемость</label>
-  <input th:value="${object.Planet_Life}"class="form-control" type="text" name="Planet_Life" placeholder="Обитаемость">
+  <input th:field="*{Planet_Life}" class="form-control" type="text"  placeholder="Обитаемость">
+  <div th:if="${#fields.hasErrors('Planet_Life')}" th:errors="*{Planet_Life}" style="color: red"></div>
   <input class="btn btn-success" type="submit" value="Изменить планету">
 </form>
 <a class="btn btn-danger" href="/planet/">Назад</a>

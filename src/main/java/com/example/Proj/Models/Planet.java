@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 
 @Entity
 public class Planet {
@@ -11,13 +12,20 @@ public class Planet {
     //   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long PlanetID;
-
+    @NotEmpty
+    @Size(min = 2 , max = 40, message = "Строка должна быть от 2 до 40 символов")
     private  String planetname;
-
+    @NotEmpty
+    @Size(min = 2 , max = 40, message = "Строка должна быть от 2 до 40 символов")
     private String planetsistem;
-
+    @NotEmpty
+    @Size(min = 2 , max = 3, message = "Только Да или Нет")
     private String  Planet_Life;
-
+    @Min(value = 100,message = "Слишком малый вес")
+    @Max(value = 10000000,message = "Слишком большой вес")
+    private Integer Planet_Mass;
+    @Positive
+    private Integer Planet_Age;
 
 
     public Planet(String planetname, Integer Planet_Mass, Integer Planet_Age, String planetsistem, String Planet_Life) {
@@ -28,8 +36,6 @@ public class Planet {
         this.Planet_Life = Planet_Life;
     }
 
-    private Integer Planet_Mass;
-    private Integer Planet_Age;
 
     public Planet() {
 

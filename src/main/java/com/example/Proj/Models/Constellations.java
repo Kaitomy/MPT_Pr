@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 
 @Entity
 public class Constellations {
@@ -12,14 +13,20 @@ public class Constellations {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long ConstellationsID;
 
+    @NotEmpty
+    @Size(min = 2 , max = 40, message = "Строка должна быть от 2 до 40 символов")
     private  String constellationsname;
-
+    @Min(value = 0,message = "Не может быть меньше 0 звезд")
+    @Max(value = 1000,message = "Слишком много звезд")
     private Integer  Constellations_Number;
-
+    @NotEmpty
+    @Size(min = 5 , max = 8, message = "Только Северное или Южное")
     private String  Constellations_Hemisphere;
-
+    @NotEmpty
+    @Size(min = 1 , max = 25, message = "Ошибка в сезоне")
     private String  Constellations_Season;
-
+    @NotEmpty
+    @Size(min = 1 , max = 25, message = "Ошибка в типе созвездия")
     private String  Constellations_Type;
 
 

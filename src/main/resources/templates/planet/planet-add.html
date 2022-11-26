@@ -13,17 +13,22 @@
 </head>
 <body>
 <h1>Добавить планету</h1>
-<form method="post">
+<form method="post" th:object="${planet}">
     <label>Название планеты</label>
-    <input class="form-control" type="text" name="Planet_Name" placeholder="Название">
+    <input th:field="*{planetname}" class="form-control" type="text" name="Planet_Name" placeholder="Название">
+    <div th:if="${#fields.hasErrors('planetname')}" th:errors="*{planetname}" style="color: red"></div>
     <label>Масса планеты</label>
-    <input class="form-control" type="number" name="Planet_Mass" placeholder="Масса">
+    <input th:field="*{Planet_Mass}" class="form-control" type="number" name="Planet_Mass" placeholder="Масса">
+    <div th:if="${#fields.hasErrors('Planet_Mass')}" th:errors="*{Planet_Mass}" style="color: red"></div>
     <label>Возраст планеты</label>
-    <input class="form-control" type="number" name="Planet_Age" placeholder="Возраст">
+    <input th:field="*{Planet_Age}" class="form-control" type="number" name="Planet_Age" placeholder="Возраст">
+    <div th:if="${#fields.hasErrors('Planet_Age')}" th:errors="*{Planet_Age}" style="color: red"></div>
     <label>Система</label>
-    <input class="form-control" type="text" name="Planet_Sistem" placeholder="Система">
+    <input th:field="*{planetsistem}" class="form-control" type="text" name="Planet_Sistem" placeholder="Система">
+    <div th:if="${#fields.hasErrors('planetsistem')}" th:errors="*{planetsistem}" style="color: red"></div>
     <label>Обитаемость</label>
-    <input class="form-control" type="text" name="Planet_Life" placeholder="Обитаемость">
+    <input th:field="*{Planet_Life}" class="form-control" type="text" name="Planet_Life" placeholder="Обитаемость">
+    <div th:if="${#fields.hasErrors('Planet_Life')}" th:errors="*{Planet_Life}" style="color: red"></div>
 
     <input class="btn btn-success" type="submit" value="Добавить планету">
 </form>

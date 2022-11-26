@@ -5,8 +5,11 @@ import com.example.Proj.Repository.PlanetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -28,20 +31,19 @@ public class PlanetController {
         return "planet/index_planet";
     }
     @PostMapping("/add")
-    public String AddPlanet ( @RequestParam(name = "Planet_Name") String Planet_Name,
-                            @RequestParam(name = "Planet_Mass") int Planet_Mass,
-                            @RequestParam(name = "Planet_Age") int Planet_Age,
-                              @RequestParam(name = "Planet_Sistem") String Planet_Sistem,
-                              @RequestParam(name = "Planet_Life") String Planet_Life
+    public String AddPlanet (@Valid Planet planet, BindingResult bindingResult) {
+        if (planet.getPlanetname().equals("Привет")) {
+            bindingResult.addError(new ObjectError("defaultMessage", "Привет! Это дефолтное сообщение"));
+        }
+        if (bindingResult.hasErrors()) {
+            return "planet/planet-add";
+        }
 
-    )
-    {
-        Planet new_planet = new Planet(Planet_Name,Planet_Mass,Planet_Age,Planet_Sistem,Planet_Life);
-        planetRepository.save(new_planet);
+        planetRepository.save(planet);
         return "redirect:/planet/";
     }
     @GetMapping("/add")
-    public String AddView()
+    public String AddView(Planet planet)
     {
         return "planet/planet-add";
     }
@@ -81,35 +83,26 @@ public class PlanetController {
     @GetMapping("/detail/{id}/upd")
     public  String updateView(
             @PathVariable Long id,
+            Planet planet,
             Model model
     )
     {
-        model.addAttribute(
-                "object",
-                planetRepository.findById(id).orElseThrow()
-        );
+        planet= planetRepository.findById(id).orElseThrow();
+        model.addAttribute("planet",planet);
         return "planet/update-planet";
     }
     @PostMapping("/detail/{id}/upd")
-    public  String update(
-            @PathVariable Long id,
-            @RequestParam String planetname,
-            @RequestParam Integer Planet_Mass,
-            @RequestParam Integer Planet_Age,
-            @RequestParam String planetsistem,
-            @RequestParam String Planet_Life
-    )
-    {
-        Planet planet = planetRepository.findById(id).orElseThrow();
+    public  String update( @Valid Planet planet, BindingResult bindingResult, Model model)
+    { if (bindingResult.hasErrors()) {
+        return "planet/update-planet";
+    }
 
-        planet.setPlanetname(planetname);
-        planet.setPlanet_Mass(Planet_Mass);
-        planet.setPlanet_Age(Planet_Age);
-        planet.setPlanetsistem(planetsistem);
-        planet.setPlanet_Life(Planet_Life);
         planetRepository.save(planet);
+
         return "redirect:/planet/detail/" + planet.getPlanetID();
     }
+
+
 }
 
 
