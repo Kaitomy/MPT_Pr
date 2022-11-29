@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+  <title>Добавление нового звездо-созвездия</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="${'/star_c/add'}" method="post">
+  <input type="text" name="name" placeholder="Введите название">
+  <input type="text" name="znak" placeholder="Введите значение">
+
+  <select  name="constellationsname">
+    <div th:each="element : ${constellations}">
+      <option th:text="${element.constellationsname}"></option>
+    </div>
+  </select>
+  <br>
+  <button type="submit">Добавить звездо-созвездия</button>
+</form>
+</body>
+</html>

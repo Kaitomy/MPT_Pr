@@ -1,9 +1,6 @@
 package com.example.Proj.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
@@ -26,7 +23,8 @@ public class Planet {
     private Integer Planet_Mass;
     @Positive
     private Integer Planet_Age;
-
+    @OneToOne(optional = true, mappedBy = "planet")
+    private Astronom astronom;
 
     public Planet(String planetname, Integer Planet_Mass, Integer Planet_Age, String planetsistem, String Planet_Life) {
         this.planetname = planetname;
@@ -89,6 +87,13 @@ public class Planet {
         this.Planet_Life = Planet_Life;
     }
 
+    public Astronom getAstronom() {
+        return astronom;
+    }
+
+    public void setAstronom(Astronom astronom) {
+        this.astronom = astronom;
+    }
 }
 
 

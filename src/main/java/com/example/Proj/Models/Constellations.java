@@ -1,10 +1,8 @@
 package com.example.Proj.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 
 @Entity
 public class Constellations {
@@ -12,7 +10,8 @@ public class Constellations {
 //   @GeneratedValue(strategy = GenerationType.IDENTITY)
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long ConstellationsID;
-
+    @OneToMany(mappedBy = "constellations", fetch = FetchType.EAGER)
+    private Collection<Stars> stars;
     @NotEmpty
     @Size(min = 2 , max = 40, message = "Строка должна быть от 2 до 40 символов")
     private  String constellationsname;
@@ -92,6 +91,15 @@ private Long ConstellationsID;
     public void setConstellations_Type(String Constellations_Type) {
         this.Constellations_Type = Constellations_Type;
     }
+
+    public Collection<Stars> getStars() {
+        return stars;
+    }
+
+    public void setStars(Collection<Stars> stars) {
+        this.stars = stars;
+    }
+
 }
 
 

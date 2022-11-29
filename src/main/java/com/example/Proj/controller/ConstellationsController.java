@@ -49,13 +49,13 @@ public class ConstellationsController {
         return "constellations/constellations-add";
     }
 
-    @GetMapping("/filter/")
-    public String filter(@RequestParam(name="constellationsname") String constellations_name, Model model)
-    {
-        List<Constellations> constellationsList = constellationsRepository.findByConstellationsname(constellations_name);
-        model.addAttribute("constellations_list",constellationsList);
-        return "constellations/index_constellations";
-    }
+//    @GetMapping("/filter/")
+//    public String filter(@RequestParam(name="constellationsname") String constellations_name, Model model)
+//    {
+//        List<Constellations> constellationsList = constellationsRepository.findByConstellationsname(constellations_name);
+//        model.addAttribute("constellations_list",constellationsList);
+//        return "constellations/index_constellations";
+//    }
     @GetMapping("/filtercontains/")
     public String filterContains(
             @RequestParam(name="constellationsname") String constellations_name,

@@ -48,13 +48,13 @@ public class PlanetController {
         return "planet/planet-add";
     }
 
-    @GetMapping("/filter/")
-    public String filter(@RequestParam(name="planetname") String planet_name, Model model)
-    {
-       List<Planet> planetList = planetRepository.findByPlanetname(planet_name);
-        model.addAttribute("planet_list",planetList);
-        return "planet/index_planet";
-    }
+//    @GetMapping("/filter/")
+//    public String filter(@RequestParam(name="planetname") String planet_name, Model model)
+//    {
+//       List<Planet> planetList = planetRepository.findByPlanetname(planet_name);
+//        model.addAttribute("planet_list",planetList);
+//        return "planet/index_planet";
+//    }
     @GetMapping("/filtercontains/")
     public String filterContains(
             @RequestParam(name="planetname") String planet_name,

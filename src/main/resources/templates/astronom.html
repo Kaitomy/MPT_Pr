@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавление астрономическое открытие</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="${'/astronom/add/'}" method="post">
+  <input type="text" name="name" placeholder="Введите имя человека">
+  <input type="text" name="country" placeholder="Введите страну">
+  <input type="number" name="years" placeholder="Введите год открытия">
+
+  <select  name="planetname">
+    <div th:each="element : ${planet}">
+      <option th:text="${element.planetname}"></option>
+    </div>
+  </select>
+  <br>
+  <button type="submit">Добавить астрономическое открытие</button>
+</form>
+</body>
+</html>
