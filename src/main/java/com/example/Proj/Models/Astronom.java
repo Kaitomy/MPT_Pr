@@ -3,6 +3,7 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 @Table(name = "astronom_planet")
@@ -23,7 +24,11 @@ public class Astronom {
     @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name="planet_AstronomID")
     private Planet planet;
-
+    @ManyToMany
+    @JoinTable (name="astronom_star",
+            joinColumns=@JoinColumn (name="astronom_id"),
+            inverseJoinColumns=@JoinColumn(name="star_id"))
+    private List<Star> star;
 
     public Long getAstronomID() {
         return AstronomID;
@@ -64,5 +69,12 @@ public class Astronom {
     }
 
     public Astronom() {
+    }
+    public List<Star> getStar() {
+        return star;
+    }
+
+    public void setStar(List<Star> star) {
+        this.star = star;
     }
 }

@@ -1,11 +1,9 @@
 package com.example.Proj.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 public class Star {
@@ -31,7 +29,11 @@ public class Star {
 @Min(value = 100,message = "Слишком маленькое значение")
 @Max(value = 1000000,message = "Слишком большое значение")
     private Integer lumen;
-
+    @ManyToMany
+    @JoinTable(name="astronom_star",
+            joinColumns=@JoinColumn(name="star_id"),
+            inverseJoinColumns=@JoinColumn(name="astronom_id"))
+    private List<Astronom> astronom;
     public Star() {
 
     }
@@ -74,5 +76,13 @@ public class Star {
 
     public void setLumen(Integer lumen) {
         this.lumen = lumen;
+    }
+
+    public List<Astronom> getAstronom() {
+        return astronom;
+    }
+
+    public void setAstronom(List<Astronom> astronom) {
+        this.astronom = astronom;
     }
 }

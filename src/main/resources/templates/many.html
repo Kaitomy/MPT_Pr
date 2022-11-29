@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавление новое открытие</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form th:action="${'/many/add/'}" method="post">
+  <select  name="astronom">
+    <div th:each="element : ${astronom}">
+      <option th:text="${element.name}"></option>
+    </div>
+  </select>
+  <select  name="star">
+    <div th:each="element : ${star}">
+      <option th:text="${element.name}"></option>
+    </div>
+  </select>
+  <br>
+  <button type="submit">Добавить открытие</button>
+</form>
+</body>
+</html>

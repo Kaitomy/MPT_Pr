@@ -41,12 +41,12 @@ public class StarController {
         return "redirect:/star/";
     }
 
-    @GetMapping("/filter/")
-    public String filter(@RequestParam(name = "name") String name_star, Model model) {
-        List<Star> starList = starRepository.findByName(name_star);
-        model.addAttribute("star_list", starList);
-        return "star/index";
-    }
+//    @GetMapping("/filter/")
+//    public String filter(@RequestParam(name = "name") String name_star, Model model) {
+//        List<Star> starList = starRepository.findByName(name_star);
+//        model.addAttribute("star_list", starList);
+//        return "star/index";
+//    }
 
     @GetMapping("/filtercontains/")
     public String filterContains(
