@@ -35,9 +35,6 @@ public class ManyController {
         Astronom astronom2 = astronomRepository.findByName(astronom);
         Star star2 = starRepository.findByName(star);
 
-//        university2.getStudents().add(student2);
-//        universityRepository.save(university2);
-
         astronom2.getStar().add(star2);
         astronomRepository.save(astronom2);
         return "redirect:/many";

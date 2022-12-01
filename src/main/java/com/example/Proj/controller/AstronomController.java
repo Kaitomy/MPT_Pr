@@ -31,7 +31,7 @@ public class AstronomController {
             }
         }
 
-        model.addAttribute("planet", planet);
+        model.addAttribute("planet", planetArrayList);
         return "astronom";
     }
 

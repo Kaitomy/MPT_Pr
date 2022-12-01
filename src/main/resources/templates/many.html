@@ -4,6 +4,7 @@
   <title>Добавление новое открытие</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<header th:insert="/fragments/header :: headerMain"></header>
 <body>
 <form th:action="${'/many/add/'}" method="post">
   <select  name="astronom">

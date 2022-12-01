@@ -12,6 +12,12 @@
         <li><a href="/star_c/" class="nav-link px-2 link-dark">Список звездо-созвездий</a></li>
         <li><a href="/astronom/" class="nav-link px-2 link-dark">Список астрономических открытий</a></li>
         <li><a href="/many/" class="nav-link px-2 link-dark">Список открытий звезд</a></li>
+        <li>
+            <h1 th:inline="text">Здравствуй [[${#httpServletRequest.remoteUser}]]!</h1>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Выход"/>
+            </form>
+        </li>
 
     </ul>
 
