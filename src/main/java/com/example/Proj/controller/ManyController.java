@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@PreAuthorize("hasAnyAuthority('EDITOR')")
 public class ManyController {
     @Autowired
-    private AstronomRepository astronomRepository;
+    public AstronomRepository astronomRepository;
     @Autowired
-    private StarRepository starRepository;
+    public StarRepository starRepository;
 
     @GetMapping("/many")
     private String Main(Model model){
