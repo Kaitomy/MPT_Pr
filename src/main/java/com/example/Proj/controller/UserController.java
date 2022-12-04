@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+@PreAuthorize("hasAnyAuthority('USER')")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -53,7 +53,6 @@ return "user/update";
                 user.getRoles().add(Role.valueOf(role));
             }
         }
-
         user.setPassword(user.getPassword());
         userRepository.save(user);
         return "redirect:/admin/";
