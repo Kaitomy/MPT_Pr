@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление Типа</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Добавить тип</h1>
+<form method="post" th:object="${type}">
+  <label>Название</label>
+  <input th:field="*{typename}" class="form-control" type="text" name="typename" placeholder="Название">
+  <div th:if="${#fields.hasErrors('typename')}" th:errors="*{typename}" style="color: red"></div>
+
+  <input class="btn btn-success" type="submit" value="Добавить тип">
+</form>
+<a class="btn btn-danger" href="/type/">Назад</a>
+</body>
+</html>

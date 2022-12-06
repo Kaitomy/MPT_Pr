@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление дополнения</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Добавить дополнение</h1>
+<form method="post" th:object="${additional}">
+  <label>Название дополнения</label>
+  <input th:field="*{additionalname}" class="form-control" type="text" name="additionalname" placeholder="Название">
+  <div th:if="${#fields.hasErrors('additionalname')}" th:errors="*{additionalname}" style="color: red"></div>
+   <label>Описание</label>
+  <textarea th:field="*{additionaldesc}" class="form-control" type="text" name="additionaldesc" placeholder="Описание"></textarea>
+  <div th:if="${#fields.hasErrors('additionaldesc')}" th:errors="*{additionaldesc}" style="color: red"></div>
+
+  <input class="btn btn-success" type="submit" value="Добавить дополнение">
+</form>
+<a class="btn btn-danger" href="/additional/">Назад</a>
+</body>
+</html>

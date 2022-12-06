@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Типы</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список типов</h1>
+<a href="/type/add" class="btn btn-success">Добавить тип</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+
+  </tr>
+  <tr th:each = "el : ${type_list}">
+    <td th:text="${el.typename}"></td>
+    <td>
+      <a th:href="'/type/detail/' + ${el.TypeID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/type/filtercontains/">
+    <input name="typename" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

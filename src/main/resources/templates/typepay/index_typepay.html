@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Типы оплаты</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список типов оплаты</h1>
+<a href="/typepay/add" class="btn btn-success">Добавить тип оплаты</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Валюта</th>
+
+  </tr>
+  <tr th:each = "el : ${typepay_list}">
+    <td th:text="${el.typepayname}"></td>
+    <td th:text="${el.typepaycurrency}"></td>
+    <td>
+      <a th:href="'/typepay/detail/' + ${el.TypePayID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/typepay/filtercontains/">
+    <input name="typepayname" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

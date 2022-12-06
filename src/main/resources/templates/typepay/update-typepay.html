@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование типа оплаты</title>
+    <style>
+        th,td{
+            border:solid black;
+        }
+    </style>
+
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<div class="container"></div>
+<h1>Редактировать тип оплаты</h1>
+<form method="post" th:object="${typepay}">
+    <input  th:field="*{TypePayID}" class="form-control" type="hidden" placeholder="ID">
+
+    <label>Название марки</label>
+    <input th:field="*{typepayname}" class="form-control" type="text" placeholder="Название">
+    <div th:if="${#fields.hasErrors('typepayname')}" th:errors="*{typepayname}" style="color: red"></div>
+    <label>Страна производства</label>
+    <input th:field="*{typepaycurrency}" class="form-control" type="text"  placeholder="Валюта">
+    <div th:if="${#fields.hasErrors('typepaycurrency')}" th:errors="*{typepaycurrency}" style="color: red"></div>
+      <input class="btn btn-success" type="submit" value="Изменить тип оплаты">
+</form>
+<a class="btn btn-danger" href="/typepay/">Назад</a>
+</div>
+</body>
+</html>

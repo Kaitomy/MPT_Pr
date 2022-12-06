@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование дополнения</title>
+    <style>
+        th,td{
+            border:solid black;
+        }
+    </style>
+
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<div class="container"></div>
+<h1>Редактировать дополнение</h1>
+<form method="post" th:object="${additional}">
+    <input  th:field="*{AdditionalID}" class="form-control" type="hidden" placeholder="ID">
+
+    <label>Название поставщика</label>
+    <input th:field="*{additionalname}" class="form-control" type="text" placeholder="Название">
+    <div th:if="${#fields.hasErrors('additionalname')}" th:errors="*{additionalname}" style="color: red"></div>
+      <label>Описание</label>
+    <textarea th:field="*{additionaldesc}" class="form-control" type="text"  placeholder="Описание"></textarea>
+    <div th:if="${#fields.hasErrors('additionaldesc')}" th:errors="*{additionaldesc}" style="color: red"></div>
+    <input class="btn btn-success" type="submit" value="Изменить дополнение">
+</form>
+<a class="btn btn-danger" href="/additional/">Назад</a>
+</div>
+</body>
+</html>

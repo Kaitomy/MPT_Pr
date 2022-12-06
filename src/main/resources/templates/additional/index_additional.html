@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Дополнение</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список дополнений</h1>
+<a href="/additional/add" class="btn btn-success">Добавить дополнение</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Описание</th>
+
+  </tr>
+  <tr th:each = "el : ${additional_list}">
+    <td th:text="${el.additionalname}"></td>
+    <td>
+      <a th:href="'/additional/detail/' + ${el.AdditionalID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/additional/filtercontains/">
+    <input name="additionalname" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

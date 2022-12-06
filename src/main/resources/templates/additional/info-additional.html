@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Дополнение</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Дополнение: ' + ${one_additional.getAdditionalname()}"></h1>
+<div class="container">
+   <p><label>Описание данного дополнения:</label></p>
+  <textarea th:text="${one_additional.getAdditionaldesc()}"></textarea>
+</div>
+<a th:href="'/additional/detail/' + ${one_additional.AdditionalID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/additional/detail/' + ${one_additional.AdditionalID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/additional/" class="btn btn-success">Назад</a>
+</body>
+</html>

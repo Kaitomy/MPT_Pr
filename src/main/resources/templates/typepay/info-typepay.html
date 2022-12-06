@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Тип оплаты</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Тип оплаты: ' + ${one_typepay.getTypepayname()}"></h1>
+<div class="container">
+  <h2 th:text="'Валюта: ' + ${one_typepay.getTypepaycurrency()}"></h2>
+</div>
+<a th:href="'/typepay/detail/' + ${one_typepay.TypePayID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/typepay/detail/' + ${one_typepay.TypePayID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/typepay/" class="btn btn-success">Назад</a>
+</body>
+</html>

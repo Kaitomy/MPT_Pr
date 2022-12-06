@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление типа оплаты</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Добавить тип оплаты</h1>
+<form method="post" th:object="${typepay}">
+  <label>Название дополнения</label>
+  <input th:field="*{typepayname}" class="form-control" type="text" name="typepayname" placeholder="Название">
+  <div th:if="${#fields.hasErrors('typepayname')}" th:errors="*{typepayname}" style="color: red"></div>
+  <label>Валюта</label>
+  <input th:field="*{typepaycurrency}" class="form-control" type="text" name="typepaycurrency" placeholder="Валюта">
+  <div th:if="${#fields.hasErrors('typepaycurrency')}" th:errors="*{typepaycurrency}" style="color: red"></div>
+
+  <input class="btn btn-success" type="submit" value="Добавить дополнение">
+</form>
+<a class="btn btn-danger" href="/typepay/">Назад</a>
+</body>
+</html>

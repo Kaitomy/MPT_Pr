@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Типы</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Тип: ' + ${one_type.getTypename()}"></h1>
+
+<a th:href="'/type/detail/' + ${one_type.TypeID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/type/detail/' + ${one_type.TypeID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/type/" class="btn btn-success">Назад</a>
+</body>
+</html>
