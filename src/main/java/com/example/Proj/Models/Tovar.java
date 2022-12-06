@@ -3,6 +3,7 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,8 @@ public class Tovar {
         this.tovarprice = tovarprice;
     }
 
-
+    @OneToMany(mappedBy = "tovar", fetch = FetchType.EAGER)
+    private Collection<Order> order;
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     private Type type;
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
@@ -81,7 +83,13 @@ public class Tovar {
         this.model = model;
         this.servicedelivery = servicedelivery;
     }
+    public Collection<Order> getOrder() {
+        return order;
+    }
 
+    public void setOrder(Collection<Order> order) {
+        this.order = order;
+    }
 
 }
 

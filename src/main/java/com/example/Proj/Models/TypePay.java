@@ -3,6 +3,7 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,8 @@ public class TypePay {
     @NotNull()
     private String  typepaycurrency;
 
-
+    @OneToMany(mappedBy = "typepay", fetch = FetchType.EAGER)
+    private Collection<Order> order;
     public TypePay(String typepayname, String typepaycurrency) {
         this.typepayname = typepayname;
         this.typepaycurrency = typepaycurrency;
@@ -53,7 +55,13 @@ public class TypePay {
         this.typepaycurrency = typepaycurrency;
     }
 
+    public Collection<Order> getOrder() {
+        return order;
+    }
 
+    public void setOrder(Collection<Order> order) {
+        this.order = order;
+    }
 
 
 }

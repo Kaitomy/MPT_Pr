@@ -3,6 +3,7 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,8 @@ public class Additional {
     @Size(min = 1 , max = 500, message = "Строка должна быть от 1 до 500 символов")
     @NotNull()
     private String  additionaldesc;
-
+    @OneToMany(mappedBy = "additional", fetch = FetchType.EAGER)
+    private Collection<Order> order;
 
     public Additional(String additionalname, String additionaldesc) {
         this.additionalname = additionalname;
@@ -52,7 +54,13 @@ public class Additional {
     public void setAdditionaldesc(String additionaldesc) {
         this.additionaldesc = additionaldesc;
     }
+    public Collection<Order> getOrder() {
+        return order;
+    }
 
+    public void setOrder(Collection<Order> order) {
+        this.order = order;
+    }
 
 
 

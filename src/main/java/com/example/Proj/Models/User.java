@@ -1,6 +1,7 @@
 package com.example.Proj.Models;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -14,7 +15,8 @@ public class User {
 
     private String email;
     private boolean active;
-
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Collection<Order> order;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
@@ -78,5 +80,12 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    public Collection<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Collection<Order> order) {
+        this.order = order;
     }
 }
