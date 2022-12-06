@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование поставщика</title>
+    <style>
+        th,td{
+            border:solid black;
+        }
+    </style>
+
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<div class="container"></div>
+<h1>Редактировать поставщика</h1>
+<form method="post" th:object="${contractor}">
+    <input  th:field="*{ContractorID}" class="form-control" type="hidden" placeholder="ID">
+
+    <label>Название поставщика</label>
+    <input th:field="*{contractorname}" class="form-control" type="text" placeholder="Название">
+    <div th:if="${#fields.hasErrors('contractorname')}" th:errors="*{contractorname}" style="color: red"></div>
+    <label>Дата заключения договора</label>
+    <input th:field="*{contractordate}" class="form-control" type="date">
+    <div th:if="${#fields.hasErrors('contractordate')}" th:errors="*{contractordate}" style="color: red"></div>
+    <label>Описание</label>
+    <textarea th:field="*{contractordesc}" class="form-control" type="text"  placeholder="Описание"></textarea>
+    <div th:if="${#fields.hasErrors('contractordesc')}" th:errors="*{contractordesc}" style="color: red"></div>
+    <input class="btn btn-success" type="submit" value="Изменить поставщика">
+</form>
+<a class="btn btn-danger" href="/contractor/">Назад</a>
+</div>
+</body>
+</html>

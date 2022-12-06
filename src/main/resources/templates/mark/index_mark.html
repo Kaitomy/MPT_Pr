@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Марки</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список марок</h1>
+<a href="/mark/add" class="btn btn-success">Добавить марку</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Страна производства</th>
+
+  </tr>
+  <tr th:each = "el : ${mark_list}">
+    <td th:text="${el.markname}"></td>
+    <td th:text="${el.markccountry}"></td>
+    <td>
+      <a th:href="'/mark/detail/' + ${el.MarkID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/mark/filtercontains/">
+    <input name="markname" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

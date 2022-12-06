@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
 import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,6 @@ public class Contractor {
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
     private  String  contractorname;
-    @NotNull()
     private Date contractordate;
     @Size(min = 1 , max = 500, message = "Строка должна быть от 1 до 500 символов")
     @NotNull()

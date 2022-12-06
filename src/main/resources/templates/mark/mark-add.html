@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление Марки</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Добавить марку</h1>
+<form method="post" th:object="${mark}">
+  <label>Название марки</label>
+  <input th:field="*{markname}" class="form-control" type="text" name="markname" placeholder="Название">
+  <div th:if="${#fields.hasErrors('markname')}" th:errors="*{markname}" style="color: red"></div>
+  <label>Страна производства</label>
+  <input th:field="*{markccountry}" class="form-control" type="text" name="markccountry" placeholder="Страна производства">
+  <div th:if="${#fields.hasErrors('markccountry')}" th:errors="*{markccountry}" style="color: red"></div>
+
+  <input class="btn btn-success" type="submit" value="Добавить марку">
+</form>
+<a class="btn btn-danger" href="/mark/">Назад</a>
+</body>
+</html>

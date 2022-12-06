@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Поставщик</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список поставщиков</h1>
+<a href="/contractor/add" class="btn btn-success">Добавить поставщика</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Дата заключения договора</th>
+    <th>Описание</th>
+
+  </tr>
+  <tr th:each = "el : ${contractor_list}">
+    <td th:text="${el.contractorname}"></td>
+    <td th:text="${el.contractordate}"></td>
+    <td>
+      <a th:href="'/contractor/detail/' + ${el.ContractorID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/contractor/filtercontains/">
+    <input name="contractorname" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

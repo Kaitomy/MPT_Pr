@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Марка</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Марка: ' + ${one_mark.getMarkname()}"></h1>
+<div class="container">
+  <h2 th:text="'Страна производства: ' + ${one_mark.getMarkccountry()}"></h2>
+</div>
+<a th:href="'/mark/detail/' + ${one_mark.MarkID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/mark/detail/' + ${one_mark.MarkID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/mark/" class="btn btn-success">Назад</a>
+</body>
+</html>

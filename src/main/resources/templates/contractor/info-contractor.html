@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Поставщик</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Поставщик: ' + ${one_contractor.getContractorname()}"></h1>
+<div class="container">
+  <h2 th:text="'Дата заключения договора: ' + ${one_contractor.getContractordate()}"></h2>
+  <p><label>Описание данного поставщика:</label></p>
+  <textarea th:text="${one_contractor.getContractordesc()}"></textarea>
+</div>
+<a th:href="'/contractor/detail/' + ${one_contractor.ContractorID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/contractor/detail/' + ${one_contractor.ContractorID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/contractor/" class="btn btn-success">Назад</a>
+</body>
+</html>
