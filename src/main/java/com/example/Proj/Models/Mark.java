@@ -3,10 +3,13 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 public class Mark {
+    @OneToMany(mappedBy = "mark", fetch = FetchType.EAGER)
+    private Collection<Model> model;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long MarkID;
@@ -33,8 +36,8 @@ public class Mark {
         return MarkID;
     }
 
-    public void setMarkID(Long MarlkID) {
-        this.MarkID = MarlkID;
+    public void setMarkID(Long MarkID) {
+        this.MarkID = MarkID;
     }
 
     public String getMarkname() {
@@ -53,7 +56,13 @@ public class Mark {
         this.markccountry = markccountry;
     }
 
+    public Collection<Model> getModel() {
+        return model;
+    }
 
+    public void setModel(Collection<Model> model) {
+        this.model = model;
+    }
 
 
 }
