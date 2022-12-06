@@ -13,6 +13,7 @@ public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long MarkID;
+    @Column(unique=true)
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
     private  String  markname;

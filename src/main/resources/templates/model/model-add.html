@@ -9,8 +9,9 @@
 <header th:insert="/fragments/header :: headerMain"></header>
 <body>
 <form th:action="${'model/add'}" method="post">
-    <input type="text" name="modelname" placeholder="Введите название">
-   <p> <textarea type="text" name="modeldesc" placeholder="Введите описание"></textarea></p>
+    <input  type="text" name="modelname" placeholder="Введите название">
+
+    <p> <textarea  type="text" name="modeldesc" placeholder="Введите описание"></textarea></p>
 
   <select  name="markname">
       <p> <div th:each="element : ${mark}">

@@ -14,13 +14,14 @@ public class Sklad {
     private Long SkladID;
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
+    @Column(unique=true)
     private  String skladname;
     @Size(min = 4 , max = 50, message = "Строка должна быть от 4 до 50 символов")
     @NotNull()
     private String  skladadress;
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
-    private  String skladcountry;
+    private  String skladsity;
     @Size(min = 4 , max = 500, message = "Строка должна быть от 4 до 50 символов")
     @NotNull()
     private String  skladdesc;
@@ -53,12 +54,12 @@ public class Sklad {
     public void setSkladadress(String skladadress) {
         this.skladadress = skladadress;
     }
-    public String getSkladcountry() {
-        return skladcountry;
+    public String getSkladsity() {
+        return skladsity;
     }
 
-    public void setSkladcountry(String skladcountry) {
-        this.skladcountry = skladcountry;
+    public void setSkladsity(String skladsity) {
+        this.skladsity = skladsity;
     }
     public String getSkladdesc() {
         return skladdesc;
@@ -67,10 +68,10 @@ public class Sklad {
     public void setSkladdesc(String skladdesc) {
         this.skladdesc = skladdesc;
     }
-    public Sklad(String skladname,String skladadress,String skladcountry,String skladdesc, Contractor contractor) {
+    public Sklad(String skladname,String skladadress,String skladsity,String skladdesc, Contractor contractor) {
         this.skladname = skladname;
         this.skladadress = skladadress;
-        this.skladcountry = skladcountry;
+        this.skladsity = skladsity;
         this.skladdesc = skladdesc;
         this.contractor = contractor;
     }
@@ -82,5 +83,13 @@ public class Sklad {
         this.tovar = tovar;
     }
     public Sklad() {
+    }
+
+    public Contractor getContractor() {
+        return contractor;
+    }
+
+    public void setContractor(Contractor contractor) {
+        this.contractor = contractor;
     }
 }

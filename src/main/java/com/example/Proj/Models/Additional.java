@@ -11,6 +11,7 @@ public class Additional {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long AdditionalID;
+    @Column(unique=true)
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
     private  String  additionalname;

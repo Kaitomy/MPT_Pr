@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Модели</title>
+  <title>Склады</title>
   <style>
     table {
       width: 100%; /* Ширина таблицы */
@@ -10,7 +10,7 @@
     }
 
     td, th {
-      padding: 5px; /* Поля в ячейках */
+       padding: 5px; /* Поля в ячейках */
       border: 1px solid #333; /* Параметры рамки */
     }
     tbody tr:nth-child(even) {
@@ -21,18 +21,22 @@
   <header th:insert="/fragments/header :: headerMain"></header>
 </head>
 <body>
-<h1>Список моделей</h1>
-<a href="/model" class="btn btn-success">Добавить модель</a>
+<h1>Список складов</h1>
+<a href="/sklad" class="btn btn-success">Добавить склад</a>
 <table style="border: solid black">
   <tr>
     <th>Название</th>
-    <th>Марка</th>
+    <th>Адрес</th>
+    <th>Город</th>
+    <th>Поставщик</th>
 
   </tr>
-  <tr th:each = "el : ${model_list}">
-    <td th:text="${el.modelname}"></td>
+  <tr th:each = "el : ${sklad_list}">
+    <td th:text="${el.skladname}"></td>
+    <td th:text="${el.skladadress}"></td>
+    <td th:text="${el.skladsity}"></td>
 <td>
-  <p th:if="${el.getMark()}" th:text="${el.getMark().markname}"></p>
+  <p th:if="${el.getContractor()}" th:text="${el.getContractor().contractorname}"></p>
 </td>
 
   </tr>

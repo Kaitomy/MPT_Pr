@@ -11,6 +11,7 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long TypeID;
+    @Column(unique=true)
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
     private  String  typename;

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>Добавление нового склада</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header th:insert="/fragments/header :: headerMain"></header>
+<body>
+<form th:action="${'sklad/add'}" method="post">
+    <input type="text" name="skladname" placeholder="Введите название">
+    <input type="text" name="skladadress" placeholder="Введите адрес">
+    <input type="text" name="skladsity" placeholder="Введите город">
+
+   <p> <textarea type="text" name="skladdesc" placeholder="Введите описание"></textarea></p>
+
+  <select  name="contractorname">
+      <p> <div th:each="element : ${contractor}">
+            <option th:text="${element.contractorname}"></option>
+        </div></p>
+    </select>
+    <br>
+    <button type="submit">Добавить склад</button>
+</form>
+<a class="btn btn-danger" href="/sklad/info">Назад</a>
+</body>
+</html>

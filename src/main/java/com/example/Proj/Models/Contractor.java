@@ -12,6 +12,7 @@ public class Contractor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ContractorID;
+    @Column(unique=true)
     @Size(min = 2 , max = 50, message = "Неверное значение")
     @NotBlank(message = "Строка не должна быть пустой")
     private  String  contractorname;
