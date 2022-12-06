@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "Tovar_all")
+@Table(name = "Tovar_plus")
 public class Tovar {
     @Id
     //   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,6 +91,34 @@ public class Tovar {
         this.order = order;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+    public ServiceDelivery getServicedelivery() {
+        return servicedelivery;
+    }
+
+    public void setServicedelivery(ServiceDelivery servicedelivery) {
+        this.servicedelivery = servicedelivery;
+    }
+    public Sklad getSklad() {
+        return sklad;
+    }
+
+    public void setSklad(Sklad sklad) {
+        this.sklad = sklad;
+    }
 }
 
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Товар</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Товар: ' + ${one_tovar.getTovarname()}"></h1>
+<div class="container">
+  <h2 th:text="'Цвет: ' + ${one_tovar.getTovarcolour()}"></h2>
+  <h2 th:text="'Цена: ' + ${one_tovar.getTovarprice()}"></h2>
+  <h2 th:if="${one_tovar.getType()}" th:text="'Тип: ' + ${one_tovar.getType().typename}"></h2>
+  <h2 th:if="${one_tovar.getModel()}" th:text="'Модель: ' + ${one_tovar.getModel().modelname}"></h2>
+  <h2 th:if="${one_tovar.getServicedelivery()}" th:text="'Сервис по доставке: ' + ${one_tovar.getServicedelivery().servicename}"></h2>
+  <h2 th:if="${one_tovar.getSklad()}" th:text="'Тип: ' + ${one_tovar.getSklad().skladname}"></h2>
+
+</div>
+<a th:href="'/tovar/detail/' + ${one_tovar.TovarID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a href="/tovar/info" class="btn btn-success">Назад</a>
+</body>
+</html>

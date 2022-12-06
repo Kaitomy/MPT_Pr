@@ -89,6 +89,7 @@ public class ServiceDeliveryController {
     {
         servicedelivery= servicedeliveryRepository.findById(id).orElseThrow();
         model.addAttribute("servicedelivery",servicedelivery);
+
         return "servicedelivery/update-servicedelivery";
     }
     @PostMapping("/detail/{id}/upd")

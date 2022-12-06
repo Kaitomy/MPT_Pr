@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>Добавление нового товара</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header th:insert="/fragments/header :: headerMain"></header>
+<body>
+<form th:action="${'tovar/add'}" method="post">
+    <input type="text" name="tovarname" placeholder="Введите название">
+    <input type="text" name="tovarcolour" placeholder="Введите цвет">
+    <input type="text" name="tovarprice" placeholder="Введите цену">
+
+   <select  name="modelname">
+      <p> <div th:each="element : ${model}">
+            <option th:text="${element.modelname}"></option>
+        </div></p>
+    </select>
+
+    <select  name="typename">
+        <p> <div th:each="element : ${type}">
+        <option th:text="${element.typename}"></option>
+    </div></p>
+    </select>
+
+    <select  name="servicename">
+        <p> <div th:each="element : ${servicedelivery}">
+        <option th:text="${element.servicename}"></option>
+    </div></p>
+    </select>
+
+    <select  name="skladname">
+        <p> <div th:each="element : ${sklad}">
+        <option th:text="${element.skladname}"></option>
+    </div></p>
+    </select>
+    <br>
+    <button type="submit">Добавить товар</button>
+</form>
+<a class="btn btn-danger" href="/tovar/info">Назад</a>
+</body>
+</html>

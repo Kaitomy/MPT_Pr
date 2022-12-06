@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "tovar_all")
+@Table(name = "order_all")
 public class Order {
     @Id
 //   @GeneratedValue(strategy = GenerationType.IDENTITY)

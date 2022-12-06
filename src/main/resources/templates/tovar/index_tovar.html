@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Товары</title>
+  <style>
+    table {
+      width: 100%; /* Ширина таблицы */
+      border-collapse: collapse; /* Убираем двойные линии */
+    }
+
+    td, th {
+       padding: 5px; /* Поля в ячейках */
+      border: 1px solid #333; /* Параметры рамки */
+    }
+    tbody tr:nth-child(even) {
+      background: #f0f0f0; /* Зебра */
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список товаров</h1>
+<a href="/tovar" class="btn btn-success">Добавить товар</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Тип</th>
+
+  </tr>
+  <tr th:each = "el : ${tovar_list}">
+    <td th:text="${el.tovarname}"></td>
+    <td th:text="${el.tovarprice}"></td>
+<td>
+  <p th:if="${el.getType()}" th:text="${el.getType().typename}"></p>
+</td>
+    <td>
+      <a th:href="'/tovar/detail/' + ${el.TovarID}">
+        Информация
+      </a>
+    </td>
+  </tr>
+
+</table>
+<div class="container">
+
+<!--  <form method="get" action="/type/filtercontains/">-->
+<!--    <input name="typename" type="text">-->
+<!--    <input class="btn btn-info" type="submit" value="Найти">-->
+<!--  </form>-->
+</div>
+</body>
+</html>
