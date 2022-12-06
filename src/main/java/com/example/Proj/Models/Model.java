@@ -62,4 +62,11 @@ public class Model {
     }
     public Model() {
     }
+    public Mark getMark() {
+        return mark;
+    }
+
+    public void setMark(Mark mark) {
+        this.mark = mark;
+    }
 }

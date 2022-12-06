@@ -33,6 +33,7 @@ public class TypePayController {
         model.addAttribute("typepay_list",typepayIterable);
         return "typepay/index_typepay";
     }
+
     @PostMapping("/add")
     public String AddTypePay(@Valid TypePay typepay, BindingResult bindingResult) {
         if (typepay.getTypepayname().equals("Привет")) {
@@ -46,8 +47,10 @@ public class TypePayController {
         return "redirect:/typepay/";
     }
     @GetMapping("/add")
-    public String AddView(TypePay typepay)
+    public String AddView(TypePay typepay,Model model)
     {
+
+        model.addAttribute("typepay", typepay);
         return "typepay/typepay-add";
     }
 

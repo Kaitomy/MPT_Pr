@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>Добавление новой модели</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header th:insert="/fragments/header :: headerMain"></header>
+<body>
+<form th:action="${'model/add'}" method="post">
+    <input type="text" name="modelname" placeholder="Введите название">
+   <p> <textarea type="text" name="modeldesc" placeholder="Введите описание"></textarea></p>
+
+  <select  name="markname">
+      <p> <div th:each="element : ${mark}">
+            <option th:text="${element.markname}"></option>
+        </div></p>
+    </select>
+    <br>
+    <button type="submit">Добавить модель</button>
+</form>
+<a class="btn btn-danger" href="/model/info">Назад</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Модели</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список моделей</h1>
+<a href="/model" class="btn btn-success">Добавить модель</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Марка</th>
+
+  </tr>
+  <tr th:each = "el : ${model_list}">
+    <td th:text="${el.modelname}"></td>
+<td>
+  <p th:if="${el.getMark()}" th:text="${el.getMark().markname}"></p>
+</td>
+
+  </tr>
+
+</table>
+<div class="container">
+
+<!--  <form method="get" action="/type/filtercontains/">-->
+<!--    <input name="typename" type="text">-->
+<!--    <input class="btn btn-info" type="submit" value="Найти">-->
+<!--  </form>-->
+</div>
+</body>
+</html>

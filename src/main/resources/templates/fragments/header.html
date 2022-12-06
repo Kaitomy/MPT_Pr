@@ -11,19 +11,17 @@
         <li><a href="/additional/" class="nav-link px-2 link-secondary">Дополнения</a></li>
         <li><a href="/type/" class="nav-link px-2 link-secondary">Типы</a></li>
         <li><a href="/typepay/" class="nav-link px-2 link-secondary">Типы оплаты</a></li>
-
+        <li><a href="/model/info" class="nav-link px-2 link-secondary">Модели</a></li>
         <li>
             <h3 th:inline="text">Добро пожаловать [[${#httpServletRequest.remoteUser}]]!</h3>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Выход"/>
-            </form>
+
         </li>
+        <li> <form th:action="@{/logout}" method="post" >
+            <input type="submit" value="Выход" class="btn btn-success"/>
+        </form></li>
 
     </ul>
 
-    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-    </form>
 
 
 </div>
