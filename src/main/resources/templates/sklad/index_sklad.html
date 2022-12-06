@@ -38,7 +38,11 @@
 <td>
   <p th:if="${el.getContractor()}" th:text="${el.getContractor().contractorname}"></p>
 </td>
-
+    <td>
+      <a th:href="'/sklad/detail/' + ${el.SkladID}">
+        Информация
+      </a>
+    </td>
   </tr>
 
 </table>

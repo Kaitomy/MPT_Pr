@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Склад</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Склад: ' + ${one_sklad.getSkladname()}"></h1>
+<div class="container">
+  <h2 th:text="'Адрес: ' + ${one_sklad.getSkladadress()}"></h2>
+  <h2 th:text="'Город: ' + ${one_sklad.getSkladsity()}"></h2>
+  <label>Описание</label>
+  <textarea th:text="${one_sklad.getSkladdesc()}"></textarea>
+  <h2 th:if="${one_sklad.getContractor()}" th:text="'Поставщик: ' + ${one_sklad.getContractor().contractorname}"></h2>
+</div>
+<a th:href="'/sklad/detail/' + ${one_sklad.SkladID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a href="/sklad/info" class="btn btn-success">Назад</a>
+</body>
+</html>

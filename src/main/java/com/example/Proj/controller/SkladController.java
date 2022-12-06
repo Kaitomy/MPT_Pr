@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 //@RequestMapping("/model")
@@ -45,6 +42,24 @@ public class SkladController {
         Contractor contractorL = contractorRepository.findByContractorname(contractorname);
         Sklad sklad = new Sklad(skladname,skladadress,skladsity,skladdesc, contractorL);
         skladRepository.save(sklad);
+        return "redirect:/sklad/info";
+    }
+
+
+    @GetMapping("/sklad/detail/{id}")
+    public String detailSklad(
+            @PathVariable Long id,
+            Model model
+    ){
+        Sklad sklad_obj = skladRepository.findById(id).orElseThrow();
+        model.addAttribute("one_sklad",sklad_obj);
+        return "sklad/info-sklad";
+    }
+    @GetMapping("/sklad/detail/{id}/del")
+    public String delSklad(@PathVariable Long id)
+    {
+        Sklad sklad_obj = skladRepository.findById(id).orElseThrow();
+        skladRepository.delete(sklad_obj);
         return "redirect:/sklad/info";
     }
 }
