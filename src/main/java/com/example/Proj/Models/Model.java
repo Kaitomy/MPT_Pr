@@ -21,7 +21,7 @@ public class Model {
     private String  modeldesc;
     @OneToMany(mappedBy = "model", fetch = FetchType.EAGER)
     private Collection<Tovar> tovar;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Mark mark;
 
 

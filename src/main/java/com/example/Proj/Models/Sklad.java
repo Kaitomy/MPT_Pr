@@ -27,7 +27,7 @@ public class Sklad {
     private String  skladdesc;
     @OneToMany(mappedBy = "sklad", fetch = FetchType.EAGER)
     private Collection<Tovar> tovar;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Contractor contractor;
 
 

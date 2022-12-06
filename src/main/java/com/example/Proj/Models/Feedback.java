@@ -17,7 +17,7 @@ public class Feedback {
     @NotBlank(message = "Строка не должна быть пустой")
     private  String feedbackdesc;
     private Date feedbackdate;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Order order;
 
 

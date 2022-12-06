@@ -18,13 +18,13 @@ public class Order {
     private String  orderaddress;
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private Collection<Feedback> feedback;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Tovar tovar;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private TypePay typepay;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Additional additional;
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private User user;
     public Order(Date orderdate, String orderaddress) {
         this.orderdate = orderdate;
