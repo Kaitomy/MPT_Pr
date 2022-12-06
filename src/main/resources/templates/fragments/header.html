@@ -10,7 +10,7 @@
         <li><a href="/contractor/" class="nav-link px-2 link-secondary">Поставщики</a></li>
 
         <li>
-            <h3 th:inline="text">Здравствуй [[${#httpServletRequest.remoteUser}]]!</h3>
+            <h3 th:inline="text">Добро пожаловать [[${#httpServletRequest.remoteUser}]]!</h3>
             <form th:action="@{/logout}" method="post">
                 <input type="submit" value="Выход"/>
             </form>
