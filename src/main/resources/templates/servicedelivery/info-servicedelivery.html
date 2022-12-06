@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Сервис доставки</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Сервис: ' + ${one_servicedelivery.getServicename()}"></h1>
+<div class="container">
+  <h2 th:text="'Город : ' + ${one_servicedelivery.getServicecountry()}"></h2>
+  <h2 th:text="'Цена : ' + ${one_servicedelivery.getServiceprice()}"></h2>
+  <h2 th:text="'Время доставки : ' + ${one_servicedelivery.getServiceperiod()}"></h2>
+</div>
+<a th:href="'/servicedelivery/detail/' + ${one_servicedelivery.ServiceDeliveryID} + '/del'"
+   class="btn btn-danger">удалить</a>
+<a th:href="'/servicedelivery/detail/' + ${one_servicedelivery.ServiceDeliveryID} + '/upd'"
+   class="btn btn-warning">редактировать</a>
+<a href="/servicedelivery/" class="btn btn-success">Назад</a>
+</body>
+</html>

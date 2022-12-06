@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Сервисы доставки</title>
+  <style>
+    table {
+      width: 100%; /* Ширина таблицы */
+      border-collapse: collapse; /* Убираем двойные линии */
+    }
+
+    td, th {
+      padding: 5px; /* Поля в ячейках */
+      border: 1px solid #333; /* Параметры рамки */
+    }
+    tbody tr:nth-child(even) {
+      background: #f0f0f0; /* Зебра */
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список сервисов доставки</h1>
+<a href="/servicedelivery/add" class="btn btn-success">Добавить сервис доставки</a>
+<table style="border: solid black">
+  <tr>
+    <th>Название</th>
+    <th>Цена</th>
+
+  </tr>
+  <tr th:each = "el : ${service_list}">
+    <td th:text="${el.servicename}"></td>
+    <td th:text="${el.serviceprice}"></td>
+    <td>
+      <a th:href="'/servicedelivery/detail/' + ${el.ServiceDeliveryID}">
+        Редактировать
+      </a>
+    </td>
+  </tr>
+</table>
+<div class="container">
+
+  <form method="get" action="/servicedelivery/filtercontains/">
+    <input name="servicename" type="text">
+    <input class="btn btn-info" type="submit" value="Найти">
+  </form>
+</div>
+</body>
+</html>

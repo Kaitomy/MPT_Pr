@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление сервиса доставки</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Добавить сервис доставки</h1>
+<form method="post" th:object="${servicedelivery}">
+  <label>Название сервиса доставки</label>
+  <input th:field="*{servicename}" class="form-control" type="text" name="servicename" placeholder="Название">
+  <div th:if="${#fields.hasErrors('servicename')}" th:errors="*{servicename}" style="color: red"></div>
+  <label>Доставка из</label>
+  <input th:field="*{servicecountry}" class="form-control" type="text" name="servicecountry" placeholder="Доставка из">
+  <div th:if="${#fields.hasErrors('servicecountry')}" th:errors="*{servicecountry}" style="color: red"></div>
+  <label>Цена</label>
+  <input th:field="*{serviceprice}" class="form-control" type="number" name="serviceprice" placeholder="Цена">
+  <div th:if="${#fields.hasErrors('serviceprice')}" th:errors="*{serviceprice}" style="color: red"></div>
+  <label>Период доставки</label>
+  <input th:field="*{serviceperiod}" class="form-control" type="text" name="serviceperiod" placeholder="Период">
+  <div th:if="${#fields.hasErrors('serviceperiod')}" th:errors="*{serviceperiod}" style="color: red"></div>
+  <input class="btn btn-success" type="submit" value="Добавить сервис доставки">
+</form>
+<a class="btn btn-danger" href="/servicedelivery/">Назад</a>
+</body>
+</html>
