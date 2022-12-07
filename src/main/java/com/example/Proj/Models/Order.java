@@ -3,7 +3,7 @@ package com.example.Proj.Models;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "order_all")
@@ -79,6 +79,33 @@ public class Order {
     public void setFeedback(Collection<Feedback> feedback) {
         this.feedback = feedback;
     }
+    public Tovar getTovar() {
+        return tovar;
+    }
 
+    public void setTovar(Tovar tovar) {
+        this.tovar = tovar;
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public TypePay getTypepay() {
+        return typepay;
+    }
+
+    public void setTypepay(TypePay typepay) {
+        this.typepay = typepay;
+    }
+    public Additional getAdditional() {
+        return additional;
+    }
+
+    public void setAdditional(Additional additional) {
+        this.additional = additional;
+    }
 
 }

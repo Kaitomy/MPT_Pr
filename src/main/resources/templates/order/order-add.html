@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+
+
+    <title>Создание нового заказа</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header th:insert="/fragments/header :: headerMain"></header>
+<body>
+<form th:action="${'order/add'}" method="post">
+    <input type="date" name="orderdate" value="2022-12-07">
+    <input type="text" name="orderaddress" placeholder="Введите адрес доставки">
+
+    <select  name="tovarname">
+      <p> <div th:each="element : ${tovar}">
+            <option th:text="${element.tovarname}"></option>
+        </div></p>
+    </select>
+
+    <select  name="typepayname">
+        <p> <div th:each="element : ${typepay}">
+        <option th:text="${element.typepayname}"></option>
+    </div></p>
+    </select>
+
+    <select  name="additionalname">
+        <p> <div th:each="element : ${additional}">
+        <option th:text="${element.additionalname}"></option>
+    </div></p>
+    </select>
+
+    <textarea style="visibility:hidden" name="username">[[${#httpServletRequest.remoteUser}]]</textarea>
+    <br>
+    <button type="submit">Добавить заказ</button>
+</form>
+<a class="btn btn-danger" href="/order/info">Назад</a>
+</body>
+</html>

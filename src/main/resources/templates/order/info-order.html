@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Заказ</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Заказ номер: ' + ${one_order.getOrderID()}"></h1>
+<div class="container">
+  <h2 th:text="'Дата: ' + ${one_order.getOrderdate()}"></h2>
+  <h2 th:text="'Адрес: ' + ${one_order.getOrderaddress()}"></h2>
+  <h2 th:if="${one_order.getTovar()}" th:text="'Товар: ' + ${one_order.getTovar().tovarname}"></h2>
+  <h2 th:if="${one_order.getUser()}" th:text="'Покупатель: ' + ${one_order.getUser().username}"></h2>
+  <h2 th:if="${one_order.getTypepay()}" th:text="'Тип оплаты: ' + ${one_order.getTypepay().typepayname}"></h2>
+  <h2 th:if="${one_order.getAdditional()}" th:text="'Дополнения: ' + ${one_order.getAdditional().additionalname}"></h2>
+
+</div>
+<a href="/order/info" class="btn btn-success">Назад</a>
+</body>
+</html>
