@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "feedback_order")
+@Table(name = "feedback_tovar")
 public class Feedback {
     @Id
     //   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Feedback {
     private  String feedbackdesc;
     private Date feedbackdate;
     @ManyToOne(optional = true, cascade = CascadeType.DETACH)
-    private Order order;
+    private Tovar tovar;
 
 
     public Long getFeedbackID() {
@@ -45,12 +45,20 @@ public class Feedback {
         this.feedbackdate = feedbackdate;
     }
 
-    public Feedback(String feedbackdesc,Date feedbackdate, Order order) {
+    public Feedback(String feedbackdesc,Date feedbackdate, Tovar tovar) {
         this.feedbackdesc = feedbackdesc;
         this.feedbackdate = feedbackdate;
-        this.order = order;
+        this.tovar = tovar;
     }
 
     public Feedback() {
+    }
+
+    public Tovar getTovar() {
+        return tovar;
+    }
+
+    public void setTovar(Tovar tovar) {
+        this.tovar = tovar;
     }
 }

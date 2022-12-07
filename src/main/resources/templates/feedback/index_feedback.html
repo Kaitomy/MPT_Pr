@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Отзывы о товарах</title>
+  <style>
+    table {
+      width: 100%; /* Ширина таблицы */
+      border-collapse: collapse; /* Убираем двойные линии */
+    }
+
+    td, th {
+      padding: 5px; /* Поля в ячейках */
+      border: 1px solid #333; /* Параметры рамки */
+    }
+    tbody tr:nth-child(even) {
+      background: #f0f0f0; /* Зебра */
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1>Список отзывов</h1>
+<table style="border: solid black">
+  <tr>
+    <th>Дата</th>
+    <th>Товар</th>
+
+  </tr>
+  <tr th:each = "el : ${feedback_list}">
+    <td th:text="${el.feedbackdate}"></td>
+    <td>
+      <p th:if="${el.getTovar()}" th:text="${el.getTovar().tovarname}"></p>
+    </td>
+    <td>
+      <a th:href="'/feedback/detail/' + ${el.FeedbackID}">
+        Информация
+      </a>
+    </td>
+  </tr>
+
+</table>
+<div class="container">
+
+  <!--  <form method="get" action="/type/filtercontains/">-->
+  <!--    <input name="typename" type="text">-->
+  <!--    <input class="btn btn-info" type="submit" value="Найти">-->
+  <!--  </form>-->
+</div>
+</body>
+</html>

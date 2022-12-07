@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <title>Добавление отзыва на товар</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header th:insert="/fragments/header :: headerMain"></header>
+<body>
+<form th:action="${'feedback/add'}" method="post">
+    <input type="date" name="feedbackdate" >
+    <p> <textarea type="text" name="feedbackdesc" placeholder="Введите описание"></textarea></p>
+
+    <select  name="tovarname">
+        <p> <div th:each="element : ${tovar}">
+        <option th:text="${element.tovarname}"></option>
+    </div></p>
+    </select>
+    <br>
+    <button type="submit">Добавить отзыв</button>
+</form>
+<a class="btn btn-danger" href="/feedback/info">Назад</a>
+</body>
+</html>

@@ -16,8 +16,7 @@ public class Order {
     @NotEmpty
     @Size(min = 4 , max = 50, message = "Ошибка в длине")
     private String  orderaddress;
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private Collection<Feedback> feedback;
+
     @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Tovar tovar;
     @ManyToOne(optional = true, cascade = CascadeType.DETACH)
@@ -72,13 +71,7 @@ public class Order {
         this.user = user;
     }
 
-    public Collection<Feedback> getFeedback() {
-        return feedback;
-    }
 
-    public void setFeedback(Collection<Feedback> feedback) {
-        this.feedback = feedback;
-    }
     public Tovar getTovar() {
         return tovar;
     }

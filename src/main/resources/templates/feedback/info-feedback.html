@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Отзыв</title>
+  <style>
+    th,td{
+      border:solid black;
+    }
+  </style>
+
+  <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body>
+<h1 th:text = "'Дата: ' + ${one_feedback.getFeedbackdate()}"></h1>
+<div class="container">
+  <label>Отзыв</label>
+  <textarea th:text="${one_feedback.getFeedbackdesc()}"></textarea>
+  <h2 th:if="${one_feedback.getTovar()}" th:text="'Товар: ' + ${one_feedback.getTovar().tovarname}"></h2>
+</div>
+
+<a href="/feedback/info" class="btn btn-success">Назад</a>
+</body>
+</html>

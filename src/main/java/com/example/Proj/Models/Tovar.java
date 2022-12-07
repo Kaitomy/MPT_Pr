@@ -28,8 +28,11 @@ public class Tovar {
         this.tovarprice = tovarprice;
     }
 
+//    @OneToMany(mappedBy = "tovar", fetch = FetchType.EAGER)
+//    private Collection<Order> order;
+
     @OneToMany(mappedBy = "tovar", fetch = FetchType.EAGER)
-    private Collection<Order> order;
+    private Collection<Feedback> feedback;
     @ManyToOne(optional = true, cascade = CascadeType.DETACH)
     private Type type;
     @ManyToOne(optional = true, cascade = CascadeType.DETACH)
@@ -83,13 +86,13 @@ public class Tovar {
         this.model = model;
         this.servicedelivery = servicedelivery;
     }
-    public Collection<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(Collection<Order> order) {
-        this.order = order;
-    }
+//    public Collection<Order> getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Collection<Order> order) {
+//        this.order = order;
+//    }
 
     public Type getType() {
         return type;
@@ -118,6 +121,14 @@ public class Tovar {
 
     public void setSklad(Sklad sklad) {
         this.sklad = sklad;
+    }
+
+    public Collection<Feedback> getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Collection<Feedback> feedback) {
+        this.feedback = feedback;
     }
 }
 
