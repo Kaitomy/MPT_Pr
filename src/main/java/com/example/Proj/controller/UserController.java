@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin")
-@PreAuthorize("hasAnyAuthority('USER')")
+@PreAuthorize("hasAnyAuthority('USER','ADMIN')")
 public class UserController {
     @Autowired
     private UserRepository userRepository;

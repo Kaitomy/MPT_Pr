@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('SELLER','USER')")
 //@RequestMapping("/model")
 //@PreAuthorize("hasAnyAuthority('EDITOR')")
 public class OrderController {

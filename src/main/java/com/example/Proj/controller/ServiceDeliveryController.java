@@ -18,6 +18,7 @@ package com.example.Proj.controller;
 
 @Controller
 @RequestMapping("/servicedelivery")
+@PreAuthorize("hasAnyAuthority('OTHER')")
 //@PreAuthorize("hasAnyAuthority('USER')")
 public class ServiceDeliveryController {
     final

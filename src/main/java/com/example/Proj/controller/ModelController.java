@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 //@RequestMapping("/model")
+@PreAuthorize("hasAnyAuthority('SELLER')")
 //@PreAuthorize("hasAnyAuthority('EDITOR')")
 public class ModelController {
     @Autowired

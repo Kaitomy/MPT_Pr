@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('SELLER')")
 @RequestMapping("/mark")
 //@PreAuthorize("hasAnyAuthority('USER')")
 public class MarkController {

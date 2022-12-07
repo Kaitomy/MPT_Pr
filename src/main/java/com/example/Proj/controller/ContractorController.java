@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAnyAuthority('OTHER')")
 @RequestMapping("/contractor")
 //@PreAuthorize("hasAnyAuthority('USER')")
 public class ContractorController {

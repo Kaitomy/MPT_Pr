@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 //@RequestMapping("/model")
 //@PreAuthorize("hasAnyAuthority('EDITOR')")
+@PreAuthorize("hasAnyAuthority('OTHER')")
 public class SkladController {
     @Autowired
     public ContractorRepository contractorRepository;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 //@RequestMapping("/model")
 //@PreAuthorize("hasAnyAuthority('EDITOR')")
+@PreAuthorize("hasAnyAuthority('SELLER')")
 public class TovarController {
     @Autowired
     public ModelRepository modelRepository;
